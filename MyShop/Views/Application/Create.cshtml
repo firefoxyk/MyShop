@@ -1,0 +1,49 @@
+﻿@model MyShop.Models.Application
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div> @*Проверка данных только для модели*@
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Add Application</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ApplicationName"></label> @*Просто название, благодаря asp-for мы используем не название ApplicationName, а Application Name из файла Application [DisplayName("Application Name")]*@
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ApplicationName" class="form-control" /> @*текстовое поле для ввода данных*@
+                        <span asp-validation-for="ApplicationName"class="text-danger"></span> @*В этом месте отображается сообщение об ошибке для св-ва name*@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Create" />@*Кнопка Create*@
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-undo-alt"></i></a>@*Кнопка Back переходит к action-методу asp-action="Index"*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
